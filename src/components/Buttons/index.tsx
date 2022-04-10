@@ -1,7 +1,11 @@
 import { Btn, Container } from './styles'
 
+interface ButtonProps {
+    changeNums: Function;
+}
 
-export function Buttons() {
+
+export function Buttons(props: ButtonProps) {
 
     const calcButtons = {
         soma: {
@@ -31,18 +35,14 @@ export function Buttons() {
 
     }
 
-
     const numButtons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-
 
     return (
         <Container>
-            {numButtons.map(num => <Btn key={num}>{num}</Btn>)}
+            {numButtons.map(num => <Btn onClick={ () => props.changeNums(num)} key={num}>{num}</Btn>)}
             {Object.entries(calcButtons).map(([key, calc]) => {
-                return <Btn>{calc.value}</Btn>
+                return <Btn key={Math.random()}>{calc.value}</Btn>
             })}
-            
         </Container>
     )
 }

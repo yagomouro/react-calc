@@ -7,7 +7,7 @@ export const CalcContainer = styled.div`
     width: 24rem;
     height: max-content;
     
-    background-color: #40375c;
+    background-color: #282828;
     border-radius: 0.5rem;
 
    

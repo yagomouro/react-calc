@@ -1,10 +1,13 @@
 import { Container, Numbers } from "./style";
 
+type DisplayProps = {
+    numbers: Array<number>
+}
 
-export function Display() {
+export function Display(props:DisplayProps) {
     return (
         <Container>
-            <Numbers>9999999999</Numbers>
+            <Numbers>{props.numbers}</Numbers>
         </Container>
     )
 }
