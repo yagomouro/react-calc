@@ -1,7 +1,8 @@
 import { Btn, Container } from './styles'
 
 interface ButtonProps {
-    changeNums: Function;
+    showNumbers: Function,
+    showCalcs: Function
 }
 
 
@@ -10,7 +11,7 @@ export function Buttons(props: ButtonProps) {
     const calcButtons = {
         soma: {
             value: '+',
-            buttonFunc: (a: number, b: number) => parseInt(a) + parseInt(b),
+            buttonFunc: (a: number, b: number) => a + b,
             showNextNumber: true
         },
         subtração: {
@@ -35,7 +36,7 @@ export function Buttons(props: ButtonProps) {
         },
         resultado: {
             value: '=',
-            buttonFunc: (a: number, b: number) => a + b,
+            buttonFunc: () => {},
             showNextNumber: false
         },
 
@@ -45,9 +46,9 @@ export function Buttons(props: ButtonProps) {
 
     return (
         <Container>
-            {numButtons.map(num => <Btn onClick={() => props.changeNums(num)} key={num}>{num}</Btn>)}
+            {numButtons.map(num => <Btn onClick={() => props.showNumbers(num)} key={num}>{num}</Btn>)}
             {Object.entries(calcButtons).map(([key, calc]) => {
-                return <Btn onClick={() => props.changeNums(calc)} key={Math.random()}>{calc.value}</Btn>
+                return <Btn onClick={() => props.showCalcs(calc)} key={Math.random()}>{calc.value}</Btn>
             })}
         </Container>
     )
